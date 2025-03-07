@@ -1,0 +1,67 @@
+{% extends "_html_taban.html" %}
+
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs-item">
+        <a href="/" class="breadcrumbs-link"><i class="fas fa-home"></i> Ana Sayfa</a>
+    </div>
+    <div class="breadcrumbs-item">
+        <a href="/eklenti/{{ eklenti_adi }}" class="breadcrumbs-link">{{ eklenti_adi }}</a>
+    </div>
+    <div class="breadcrumbs-item">
+        <span class="breadcrumbs-current"><i class="fas fa-play"></i> {{ baslik }}</span>
+    </div>
+{% endblock %}
+
+
+{% block icerik %}
+
+<div class="detail-container">
+    <div class="video-links">
+        <div id="video-links-ui"></div>
+    </div>
+
+    <div id="video-player-container">
+        <div id="video-player-wrapper">
+            <div id="loading-overlay" class="player-loading" style="display: none;">
+                <div class="spinner"></div>
+            </div>
+            <video id="video-player" controls playsinline>
+                Tarayıcınız video etiketini desteklemiyor.
+            </video>
+        </div>
+    </div>
+
+    <div class="control-buttons" style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <a href="/eklenti/{{ eklenti_adi }}" class="button button-secondary" style="flex: 1; min-width: 180px; margin-bottom: 0.5rem; text-align: center; justify-content: center;">
+            <i class="fas fa-arrow-left"></i> Eklenti Sayfasına Dön
+        </a>
+        <button id="toggle-diagnostics" class="button button-secondary" style="flex: 1; min-width: 180px; margin-bottom: 0.5rem; text-align: center; justify-content: center;">
+            <i class="fas fa-bug"></i> Tanılama Bilgileri
+        </button>
+    </div>
+
+    <div id="diagnostics-panel">
+        <h3>Tanılama Bilgileri</h3>
+        <div class="diagnostics-toolbar">
+            <button id="clear-logs">Logları Temizle</button>
+            <button id="copy-logs">Kopyala</button>
+            <button id="download-logs">İndir</button>
+        </div>
+        <pre id="diagnostics-log"></pre>
+    </div>
+
+    <div id="video-links-data" style="display: none;">
+        {% for link in links %}
+            <div class="video-link-item" data-name="{{ link.name if must_extract else eklenti_adi }}" data-url="{{ link.url }}" data-referer="{{ link.referer }}" data-headers="{{ link.headers }}">
+                {% for subtitle in link.subtitles %}
+                    <div class="subtitle-item" data-name="{{ subtitle.name }}" data-url="{{ subtitle.url }}"></div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script defer src="{{ url_for('static_home', path='JS/player.js') }}"></script>
+
+{% endblock %}
