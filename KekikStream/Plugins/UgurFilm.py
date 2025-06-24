@@ -6,7 +6,7 @@ from parsel           import Selector
 class UgurFilm(PluginBase):
     name        = "UgurFilm"
     language    = "tr"
-    main_url    = "https://ugurfilm8.com"
+    main_url    = "https://ugurfilm9.com"
     favicon     = f"https://www.google.com/s2/favicons?domain={main_url}&sz=64"
     description = "Yabancı film izle, Türkçe dublaj ve Türkçe altyazılı film seçenekleriyle 720p ve 1080p HD kalitesinde film izle - Uğur Film full hd film izle."
 

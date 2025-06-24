@@ -6,7 +6,7 @@ from parsel           import Selector
 class JetFilmizle(PluginBase):
     name        = "JetFilmizle"
     language    = "tr"
-    main_url    = "https://jetfilmizle.io"
+    main_url    = "https://jetfilmizle.watch"
     favicon     = f"https://www.google.com/s2/favicons?domain={main_url}&sz=64"
     description = "Binlerce Film İzleme Seçeneğiyle En İyi Film İzleme Sitesi"
 
